@@ -86,7 +86,8 @@ public class TaskRecompileMc extends CachedTask
         LoggingManager log = getLogging();
         LogLevel startLevel = getProject().getGradle().getStartParameter().getLogLevel();
         if (startLevel.compareTo(LogLevel.LIFECYCLE) >= 0) {
-            log.setLevel(LogLevel.ERROR);
+            log.captureStandardOutput(LogLevel.ERROR);
+            log.captureStandardError(LogLevel.ERROR);
         }
 
         // recompile
